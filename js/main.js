@@ -83,6 +83,34 @@
             }
         }
     });
+    // Testimonial carousel
+    $(".gallery-carousel").owlCarousel({
+        loop: false,
+        dots: false,
+        nav: true,
+        margin: 5,
+        navText: [
+            `<i class="fa fa-chevron-left"></i>`,
+            `<i class="fa fa-chevron-right"></i>`
+        ],
+        autoplay: false,
+        slideTransition: 'linear',
+        autoplayHoverPause: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            500: {
+                items: 2
+            },
+            800: {
+                items: 4
+            },
+            1000: {
+                items: 6
+            }
+        }
+    });
 
 
 
@@ -106,22 +134,34 @@ function password_show_hide() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    const sections = document.querySelectorAll('section');
+// $(".navbar .nav-link").on("click", function(){
+//     $(".navbar").find(".active").removeClass("active");
+//     $(this).addClass("active");
+//  })
 
-    const observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(function (entry) {
-            const navLink = document.querySelector(`.nav-link[data-target="${entry.target.id}"]`);
+$(document).ready(function(){
 
-            if (entry.isIntersecting) {
-                navLink.classList.add('active');
-            } else {
-                navLink.classList.remove('active');
-            }
-        });
-    }, { rootMargin: '0px', threshold: 0.5 });
-
-    sections.forEach(function (section) {
-        observer.observe(section);
-    });
-});
+    var sectionIds = $('a.nav-link');
+  
+      $(document).scroll(function(){
+          sectionIds.each(function(){
+  
+              var container = $(this).attr('href');
+              var containerOffset = $(container).offset().top;
+              var containerHeight = $(container).outerHeight();
+              var containerBottom = containerOffset + containerHeight;
+              var scrollPosition = $(document).scrollTop();
+      
+              if(scrollPosition < containerBottom - 50 && scrollPosition >= containerOffset - 50){
+                  $(this).addClass('active');
+              } else{
+                  $(this).removeClass('active');
+              }
+      
+      
+          });
+      });
+     
+  
+  
+  });
