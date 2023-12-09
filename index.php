@@ -239,7 +239,7 @@ include_once('components/header.php');
 
         <h1 class="display-5 mb-4">PARA KOHAI</h1>
         <div class="text-end mb-2 ">
-          <a href="" class="btn btn-sm btn-outline-primary  ">Lihat Kohai Lainnya >></a>
+          <a href="kohai.php" class="btn btn-sm btn-outline-primary  ">Lihat Kohai Lainnya >></a>
         </div>
       </div>
       <div class="row g-4">
@@ -278,7 +278,7 @@ include_once('components/header.php');
 
         <h1 class="display-5 ">GALERI <span class="text-primary">TERBARU</span></h1>
         <div class="text-end ">
-          <a href="" class="btn btn-sm btn-outline-primary  ">Lihat Galeri >></a>
+          <a href="gallery.php" class="btn btn-sm btn-outline-primary  ">Lihat Galeri >></a>
         </div>
       </div>
 

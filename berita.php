@@ -19,22 +19,20 @@ require_once __DIR__ . '/components/header.php';
   <!-- Breadcrumb Start -->
   <div class="container-fluid service pt-5">
     <div class="container">
-      <div class="d-flex pb-4 justify-content-between align-items-center">
-        <div class="">
-          <a href="index.php">
-            <i class="fas fa-arrow-circle-left fa-lg text-dark"> Back</i>
-          </a>
-        </div>
-        <div class="">
-          <h4>Logo Bayonet Karate</h1>
-        </div>
-      </div>
+      <h6 class="text-end">Logo Bayonet Karate</h6>
       <div class="row card bg-light">
+        <div class="text-end">
+
+        </div>
         <nav aria-label="breadcrumb ">
           <ol class="breadcrumb my-auto py-2">
-            <li class="breadcrumb-item"><a href="index.php">Beranda</a></li>
+            <li class="breadcrumb-item">
+              <a href="index.php"><i class="fas fa-arrow-circle-left fa-md"></i> Beranda</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page">Berita </li>
+
           </ol>
+
         </nav>
       </div>
 
@@ -46,6 +44,7 @@ require_once __DIR__ . '/components/header.php';
   <!-- Content Berita -->
   <div class="container-fluid service pt-4">
     <div class="container">
+      <h1 class="text-center">Berita</h1>
       <div class="input-group w-75 mx-auto">
         <input type="text" class="form-control" placeholder="Cari Berita terbaru...." aria-label="Cari berita disini"
           aria-describedby="basic-addon1">
