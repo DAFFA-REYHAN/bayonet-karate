@@ -176,6 +176,7 @@
 
 function password_show_hide() {
     var x = document.getElementById("password");
+
     var show_eye = document.getElementById("show_eye");
     var hide_eye = document.getElementById("hide_eye");
     hide_eye.classList.remove("d-none");
@@ -189,11 +190,21 @@ function password_show_hide() {
         hide_eye.style.display = "none";
     }
 }
-
-// $(".navbar .nav-link").on("click", function(){
-//     $(".navbar").find(".active").removeClass("active");
-//     $(this).addClass("active");
-//  })
+function confirmPassword_show_hide() {
+    var y = document.getElementById("confirmPassword");
+    var show_eye = document.getElementById("confirm_show_eye");
+    var hide_eye = document.getElementById("confirm_hide_eye");
+    hide_eye.classList.remove("d-none");
+    if (y.type === "password") {
+        y.type = "text";
+        show_eye.style.display = "none";
+        hide_eye.style.display = "block";
+    } else {
+        y.type = "password";
+        show_eye.style.display = "block";
+        hide_eye.style.display = "none";
+    }
+}
 
 $(document).ready(function(){
 

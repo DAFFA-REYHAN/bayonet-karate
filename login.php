@@ -3,15 +3,52 @@
 <?php
 $title = "Login";
 include_once('components/header.php');
+include './controller/auth_controller.php';
+
+if (!isset($_COOKIE["bayonet-user"])) {
+
+} else{
+  
+  $token = $_COOKIE["bayonet-user"];
+  if($a=verifyToken($token)){
+    $username = $a->username;
+    header('Location: anggota.php');
+    exit;
+  }else{
+    echo" Token Error";
+
+   
+   }
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Ambil data dari formulir
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    // Panggil fungsi login
+    $result = loginUser($username, $password);
+
+    // Tampilkan pesan hasil login atau token JWT
+    if (is_string($result)) {
+     $data= verifyToken($result);
+        echo "Login gagal. Pesan: " . $data;
+    } else {
+        echo "Login berhasil. Token: " . verifyToken($result);
+        // Simpan token ini dan gunakan dalam setiap permintaan yang memerlukan otentikasi
+    }
+}
 ?>
+
+
 
 <body class="">
 
-
-  <div class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">
-    <div class="m-auto ">
-      <div class="d-flex justify-content-between gap-2 align-items-center mb-2 ">
-        <a href="index.php">
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">
+    <div class=" m-auto ">
+      <div class=" d-flex justify-content-between gap-2 align-items-center mb-2 ">
+        <a href=" index.php">
           <i class="fas fa-arrow-circle-left fa-lg text-dark"> Back</i>
         </a>
         <!-- Pills navs -->
@@ -38,10 +75,11 @@ include_once('components/header.php');
             <img src="logo.png" alt="Logo" class="mb-4">
             <h1>Masuk Akun</h1>
             <p class="mb-4">Masukkan data sesuai dengan data yang valid</p>
-            <form action="" method="post">
+
+            <form action="login.php" method="post">
               <div class="mb-3">
                 <label for="username" class="fw-bold text-dark">Alamat Email</label>
-                <input type="email" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username" required>
               </div>
               <div class="mb-3">
                 <label for="password" class="fw-bold text-dark">Password</label>
@@ -58,7 +96,8 @@ include_once('components/header.php');
                 <label class="form-check-label text-dark" for="rememberme">Remember Me</label>
               </div>
               <button type="submit" class="btn btn-primary p-2 w-100">Masuk</button>
-              <p class="text-center my-3"> Belum menjadi anggota? <a href="register.php" class="text-primary">Daftar sekarang!</a> </p>
+              <p class="text-center my-3"> Belum menjadi anggota? <a href="register.php" class="text-primary">Daftar
+                  sekarang!</a> </p>
             </form>
 
           </div>

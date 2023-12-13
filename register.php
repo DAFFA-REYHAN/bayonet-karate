@@ -3,11 +3,36 @@
 <?php
 $title = "Login";
 include_once('components/header.php');
+require "./controller/auth_controller.php";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Ambil data dari formulir
+  $username = $_POST["username"];
+  $email = $_POST["email"];
+  $password = $_POST["password"];
+  $confirmPassword = $_POST["confirmPassword"];
+
+  // Periksa apakah kata sandi dan konfirmasi kata sandi sesuai
+  if ($password != $confirmPassword) {
+      echo "Kata sandi dan konfirmasi kata sandi tidak sesuai.";
+  } else {
+      // Panggil fungsi registrasi
+      $result = registerUser($username,$email, $password);
+
+      // Tampilkan pesan hasil registrasi
+      if ($result === true) {
+          echo "Registrasi berhasil. Silakan login.";
+      } else {
+          echo "Registrasi gagal. Pesan: " . $result;
+      }
+  }
+}
+
 ?>
 
 <body class="my-auto py-5">
 
-  <div class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">
+  <div
+    class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">
     <div class="m-auto ">
       <div class="d-flex justify-content-between gap-2 align-items-center mb-2 ">
         <a href="index.php">
@@ -36,10 +61,11 @@ include_once('components/header.php');
             <h1>Daftar Akun</h1>
             <p class="mb-4">Masukkan data dengan benar | Tata cara pendaftaran anggota
 
-              <i class="fas fa-question-circle " type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+              <i class="fas fa-question-circle " type="button" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"></i>
 
             </p>
-            <form action="" method="post">
+            <form action="register.php" method="post">
               <div class="mb-3">
                 <label for="username" class="fw-bold text-dark">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -62,15 +88,16 @@ include_once('components/header.php');
                 <label for="confirmPassword" class="fw-bold text-dark">Konfirmasi Kata Sandi</label>
                 <div class="input-group">
                   <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                  <span class="input-group-text" onclick="password_show_hide()" role="button">
-                    <i class=" far fa-eye" id="show_eye"></i>
-                    <i class="far fa-eye-slash d-none" id="hide_eye"></i>
+                  <span class="input-group-text" onclick="confirmPassword_show_hide()" role="button">
+                    <i class=" far fa-eye" id="confirm_show_eye"></i>
+                    <i class="far fa-eye-slash d-none" id="confirm_hide_eye"></i>
                   </span>
                 </div>
               </div>
 
               <button type="submit" class="btn btn-primary p-2 w-100">Submit</button>
-              <p class="text-center my-3"> Sudah menjadi anggota? <a href="register.php" class="text-primary">Masuk</a> </p>
+              <p class="text-center my-3"> Sudah menjadi anggota? <a href="register.php" class="text-primary">Masuk</a>
+              </p>
             </form>
 
           </div>
@@ -90,12 +117,18 @@ include_once('components/header.php');
         </div>
         <div class="modal-body">
           <ol>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste reiciendis sequi quidem molestiae tempore
+              alias del.</li>
           </ol>
         </div>
 
