@@ -63,7 +63,7 @@ function loginUser($username, $password) {
             $user_id = $user['id'];
             $username = $user['username'];
             $token = generateToken($user_id,$username);
-            setcookie("bayonet-user", $token);
+            setcookie("bayonet-user", $token,0, "", "", true, true);
             header('Location: anggota.php');
             mysqli_close($conn);
 exit;
@@ -84,6 +84,7 @@ function generateToken($user_id,$username) {
     $payload = array(
         "user_id" => $user_id,
         "username" => $username,
+        "session_id"=> bin2hex(random_bytes(32)),
         "exp" => time() + 3600
     );
 
@@ -106,4 +107,9 @@ function verifyToken($token) {
     }
 }
 
-?>
+
+function logout(){
+    setcookie("bayonet-user", "", time() - 3600);
+    header("Location: login.php");
+}
+    ?>

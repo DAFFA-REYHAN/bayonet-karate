@@ -34,7 +34,8 @@ include_once('components/header.php');
             <a href="#berita" class="nav-item nav-link">Berita</a>
             <a href="#kohai" class="nav-item nav-link">Kohai</a>
             <a href="#galeri" class="nav-item nav-link">Galeri</a>
-            <!-- <a href="" class="nav-item nav-link d-block d-xl-none rounded-pill btn-primary btn w-90 mx-auto mt-4">Masuk</a> -->
+            <a href=""
+              class="nav-item nav-link d-block d-xl-none rounded-pill btn-primary btn w-75 mx-auto mt-4">Masuk</a>
           </div>
 
           <a href="login.php" class="btn btn-primary py-3 px-4 d-none d-xl-inline-block rounded-pill">Masuk</a>

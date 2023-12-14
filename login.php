@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 
-<body class="">
+<body class="my-5">
 
   <div
     class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">

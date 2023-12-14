@@ -29,11 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 ?>
 
-<body class="my-auto py-5">
+<body class="my-5 py-5">
 
   <div
     class="container d-flex flex-column align-items-center justify-content-center vh-100 m-auto m-md-auto m-lg-auto ">
-    <div class="m-auto ">
+    <div class="m-auto   ">
       <div class="d-flex justify-content-between gap-2 align-items-center mb-2 ">
         <a href="index.php">
           <i class="fas fa-arrow-circle-left fa-lg text-dark"> Back</i>

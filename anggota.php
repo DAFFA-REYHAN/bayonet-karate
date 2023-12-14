@@ -4,7 +4,12 @@
 
 
 require_once __DIR__ .'/controller/auth_controller.php';
- 
+
+if (isset($_GET['action']) && $_GET['action'] == 'logout') {
+  logout(); // Panggil fungsi logout()
+}
+
+
 if ($_COOKIE["bayonet-user"] ) {
     $token = $_COOKIE["bayonet-user"];
     if($a=verifyToken($token)){
@@ -30,6 +35,10 @@ if ($_COOKIE["bayonet-user"] ) {
 
 <body>
   <h1>Ini Adalah Halaman setelah login <?= $username ?></h1>
+
+  <a href="?action=logout"><button>Logout</button></a>
+
+
 </body>
 
 </html>
