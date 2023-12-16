@@ -12,7 +12,7 @@ if (!isset($_COOKIE["bayonet-user"])) {
   $token = $_COOKIE["bayonet-user"];
   if($a=verifyToken($token)){
     $username = $a->username;
-    header('Location: anggota.php');
+    header('Location:./anggota/dashboard.php');
     exit;
   }else{
     echo" Token Error";
@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Pills navs -->
 
       </div>
+
 
       <div class="card m-auto m-md-auto m-lg-auto w-auto ">
         <div class="row g-0 ">

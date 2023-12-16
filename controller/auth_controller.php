@@ -1,8 +1,11 @@
 <?php
 
 
-include 'vendor/autoload.php';  // Path ke file autoload dari Composer
-
+if (isset($SERVER)&&$_SERVER['REQUEST_URI']=== $SERVER){
+include '../vendor/autoload.php';  // Path ke file autoload dari Composer
+}else{
+    include 'vendor/autoload.php';
+}
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
@@ -63,8 +66,8 @@ function loginUser($username, $password) {
             $user_id = $user['id'];
             $username = $user['username'];
             $token = generateToken($user_id,$username);
-            setcookie("bayonet-user", $token,0, "", "", true, true);
-            header('Location: anggota.php');
+            setcookie("bayonet-user", $token,time()+86400, "/bayonet-karate/anggota/", "", true, true);
+            header('Location: anggota/dashboard.php');
             mysqli_close($conn);
 exit;
         } else {
@@ -110,6 +113,6 @@ function verifyToken($token) {
 
 function logout(){
     setcookie("bayonet-user", "", time() - 3600);
-    header("Location: login.php");
+    header("Location: ../login.php");
 }
     ?>
